@@ -3,21 +3,27 @@ package entidade;
 public class Grupo {
     private Pessoa[] membros;
     private int nMembros;
+    private int limite;
 
-    public Grupo() {
-        membros = new Pessoa[100];
-        nMembros = 0;
+    public Grupo(int limite) {
+        this.limite = limite;
+        this.membros = new Pessoa[this.limite];
+        this.nMembros = 0;
     }
 
     public int criaMembro(String nome, int idade) {
-        membros[nMembros] = new Pessoa(nome, idade);
-        nMembros += 1;
-        
-        return 0;
+        if (this.nMembros < this.limite) {
+            this.membros[nMembros] = new Pessoa(nome, idade);
+            this.nMembros += 1;
+            
+            return 0;
+        }
+
+        return 1;
     }
     
     public static void main(String[] args) {
-        Grupo g1 = new Grupo();
+        Grupo g1 = new Grupo(5);
 
         g1.criaMembro("João", 40);
 
