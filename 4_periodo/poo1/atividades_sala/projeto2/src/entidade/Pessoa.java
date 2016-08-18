@@ -13,7 +13,7 @@ public class Pessoa {
         return this.nome;
     }
 
-    public int getIndade() {
+    public int getIdade() {
         return this.idade;
     }
 }
