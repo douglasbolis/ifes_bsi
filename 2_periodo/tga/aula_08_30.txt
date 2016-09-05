@@ -1,0 +1,11 @@
+principais funcções organizacionais
+ - logistica(add)
+  · Armazenamento e transporte(produtos, matéria-prima)
+  · Otimização de tempo e espaço(climatização e estocagem dos produtos)
+
+ 4 pesos do marketing
+  - produto
+  - preço(variado de acordo com o tamanho)
+  - promoção(promover o produto)
+  - praça(local: bar, restaurante...)
+
