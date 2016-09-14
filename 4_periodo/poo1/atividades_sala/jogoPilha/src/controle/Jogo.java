@@ -4,8 +4,8 @@ import entidades.*;
 import fronteira.*;
 
 public class Jogo {
-    private int tamPilha, ctrl = 0;
-    private Boolean achou = false;
+    private int tamPilha, ctrl;
+    private Boolean achou;
     private Pilha p;
     private Jogador j1;
     private Jogador j2;
@@ -14,6 +14,8 @@ public class Jogo {
         p = new Pilha(tamPilha);
         j1 = new Jogador();
         j2 = new Jogador();
+        ctrl = 0;
+        achou = false;
     }
 
     public void jogar() {
