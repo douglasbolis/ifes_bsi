@@ -1,23 +1,21 @@
 package entidades;
 
 import java.math.*;
+import fronteira.*;
 
-public class Figura {
-    // x e y iniciais
-    private int xi, yi, lado;
+public class Quadrado {
+    private int lado;
 
-    public Figura(int xi, int yi, int lado, int x, int y) {
+    public Quadrado(int lado, int x, int y) {
         super(x, y);
-        this.xi = xi;
-        this.yi = yi;
         this.lado = lado;
     }
 
     public void imp() {
-        Saida.println("Xinicial: " + this.xi);
-        Saida.println("Yinicial: " + this.yi);
-        Saida.println("XFinal: " + (this.xi + this.lado));
-        Saida.println("YFinal: " + (this.yi + this.lado));
+        Saida.println("Xinicial: " + (this.x - (this.lado / 2)));
+        Saida.println("Yinicial: " + (this.y - (this.lado / 2)));
+        Saida.println("XFinal: " + (this.x + (this.lado / 2)));
+        Saida.println("YFinal: " + (this.x + (this.lado / 2)));
         super.imp();
     }
 

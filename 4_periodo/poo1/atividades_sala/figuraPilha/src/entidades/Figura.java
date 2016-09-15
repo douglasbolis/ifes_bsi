@@ -1,5 +1,7 @@
 package entidades;
 
+import fronteira.*;
+
 public class Figura {
     private int x, y;
 
@@ -9,7 +11,7 @@ public class Figura {
     }
 
     public void imp() {
-        System.out.println( "Centro(" + this.x + ", " + this.y + ")" );
+        Saida.println( "Centro(" + this.x + ", " + this.y + ")" );
     }
 
     public int getX() {

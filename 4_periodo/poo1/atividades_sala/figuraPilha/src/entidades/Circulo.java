@@ -1,6 +1,7 @@
 package entidades;
 
 import java.math.*;
+import fronteira.*;
 
 public class Circulo extends Figura {
     private raio;
