@@ -4,7 +4,7 @@ import java.math.*;
 import fronteira.*;
 
 public class Circulo extends Figura {
-    private raio;
+    private int raio;
 
     public Circulo(int x, int y, int raio) {
         super(x, y);
@@ -24,7 +24,7 @@ public class Circulo extends Figura {
         super.imp();
     }
 
-    public float getArea() {
+    public Double getArea() {
         return Math.PI * Math.pow(this.raio, 2);
     }
 }

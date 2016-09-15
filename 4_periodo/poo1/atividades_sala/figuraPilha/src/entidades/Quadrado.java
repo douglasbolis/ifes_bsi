@@ -3,7 +3,7 @@ package entidades;
 import java.math.*;
 import fronteira.*;
 
-public class Quadrado {
+public class Quadrado extends Figura {
     private int lado;
 
     public Quadrado(int lado, int x, int y) {
@@ -12,26 +12,26 @@ public class Quadrado {
     }
 
     public void imp() {
-        Saida.println("Xinicial: " + (this.x - (this.lado / 2)));
-        Saida.println("Yinicial: " + (this.y - (this.lado / 2)));
-        Saida.println("XFinal: " + (this.x + (this.lado / 2)));
-        Saida.println("YFinal: " + (this.x + (this.lado / 2)));
+        Saida.println("Xinicial: " + (super.getX() - (this.lado / 2)));
+        Saida.println("Yinicial: " + (super.getY() - (this.lado / 2)));
+        Saida.println("XFinal: " + (super.getX() + (this.lado / 2)));
+        Saida.println("YFinal: " + (super.getY() + (this.lado / 2)));
         super.imp();
     }
 
     public int getX() {
-        return this.x;
+        return super.getX();
     }
 
     public int getY() {
-        return this.y;
+        return super.getY();
     }
 
     public int getLado() {
         return this.lado;
     }
 
-    public int getArea() {
+    public Double getArea() {
         return Math.pow(this.lado, 2);
     }
 }

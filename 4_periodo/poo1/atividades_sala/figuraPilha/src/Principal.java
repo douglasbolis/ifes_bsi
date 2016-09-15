@@ -2,8 +2,9 @@ import controle.*;
 
 public class Principal {
     public static void main(String[] args) {
-        Jogo j = new Jogo(10);
+        EmpilhadorFigura pFig = new EmpilhadorFigura(2);
 
-        j.jogar();
+        pFig.horaDeEmpilhar();
+        pFig.mostrarFiguras();
     }
 }

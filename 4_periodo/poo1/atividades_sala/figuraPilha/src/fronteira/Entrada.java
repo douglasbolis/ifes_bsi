@@ -9,4 +9,18 @@ public class Entrada {
         Saida.print(msg);
         return reader.nextInt();
     }
+
+    public static Double leDouble(String msg) {
+        Scanner reader = new Scanner(System.in);
+
+        Saida.print(msg);
+        return reader.nextDouble();
+    }
+
+    public static String leString(String msg) {
+        Scanner reader = new Scanner(System.in);
+
+        Saida.print(msg);
+        return reader.next();
+    }
 }
