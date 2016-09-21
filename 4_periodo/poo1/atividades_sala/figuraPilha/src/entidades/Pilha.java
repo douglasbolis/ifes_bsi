@@ -33,6 +33,10 @@ public class Pilha {
         return vet[topo];
     }
 
+    public int getNElem() {
+        return this.topo;
+    }
+
     public void limpaPilha() {
         topo = -1;
     }

@@ -21,8 +21,6 @@ public class EmpilhadorFigura {
         x = Entrada.leInt("X: ");
         y = Entrada.leInt("Y: ");
 
-        Saida.println(opcao);
-
         while (!p.cheia() && java.util.Arrays.asList(figuras).indexOf(opcao) >= 0) {
             opcao = Entrada.leString("\nInforme uma figura a ser empilhada: ");
             switch (opcao) {
@@ -48,11 +46,12 @@ public class EmpilhadorFigura {
     }
 
     public void mostrarFiguras() {
-        Saida.println("\nImpressão em ordem de desempilhamento");
+        new Example01(p);
+        // Saida.println("\nImpressão em ordem de desempilhamento");
 
-        while(!p.vazia()) {
-            f = (Figura) p.desempilhe();
-            f.imp();
-        }
+        // while(!p.vazia()) {
+        //     f = (Figura) p.desempilhe();
+        //     f.imp();
+        // }
     }
 }
