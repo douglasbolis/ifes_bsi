@@ -16,7 +16,7 @@ public class Pilha {
     }
 
     public boolean empilhe(Object elem) {
-        if ( topo >= tam - 1) return false;
+        if (cheia()) return false;
         topo += 1;
         vet[topo] = elem;
         return true;
@@ -35,6 +35,10 @@ public class Pilha {
 
     public void limpaPilha() {
         topo = -1;
+    }
+
+    public boolean cheia() {
+        return (topo >= tam - 1);
     }
 
     public boolean vazia() {

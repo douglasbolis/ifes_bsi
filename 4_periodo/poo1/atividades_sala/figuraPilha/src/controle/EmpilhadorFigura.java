@@ -13,7 +13,7 @@ public class EmpilhadorFigura {
     public EmpilhadorFigura(int qtdElemPilha) {
         p = new Pilha(qtdElemPilha);
         // valida while
-        opcao = figura[0];
+        opcao = figuras[0];
     }
 
     public void horaDeEmpilhar() {
@@ -21,18 +21,24 @@ public class EmpilhadorFigura {
         x = Entrada.leInt("X: ");
         y = Entrada.leInt("Y: ");
 
-        while (figuras.contains(opcao)) {
+        Saida.println(opcao);
+
+        while (!p.cheia() && java.util.Arrays.asList(figuras).indexOf(opcao) >= 0) {
             opcao = Entrada.leString("\nInforme uma figura a ser empilhada: ");
-            Saida.println(opcao);
             switch (opcao) {
-                case "quadrado":
-                    ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
-                    f = new Quadrado(ladoRaio, x, y);
-                    p.empilhe(f);
-                    break;
                 case "circulo":
                     ladoRaio = Entrada.leInt("\nInforme o raio do circulo: ");
-                    f = new Quadrado(ladoRaio, x, y);
+                    f = new Circulo(x, y, ladoRaio);
+                    p.empilhe(f);
+                    break;
+                case "quadrado":
+                    ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
+                    f = new Quadrado(x, y, ladoRaio);
+                    p.empilhe(f);
+                    break;
+                case "triangulo":
+                    ladoRaio = Entrada.leInt("\nInforme o lado do triangulo: ");
+                    f = new Triangulo(x, y, ladoRaio);
                     p.empilhe(f);
                     break;
                 default:
@@ -42,7 +48,7 @@ public class EmpilhadorFigura {
     }
 
     public void mostrarFiguras() {
-        Saida.print("\nImpressão em ordem de desempilhamento");
+        Saida.println("\nImpressão em ordem de desempilhamento");
 
         while(!p.vazia()) {
             f = (Figura) p.desempilhe();

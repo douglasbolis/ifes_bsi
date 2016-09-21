@@ -6,17 +6,15 @@ import fronteira.*;
 public class Quadrado extends Figura {
     private int lado;
 
-    public Quadrado(int lado, int x, int y) {
+    public Quadrado(int x, int y, int lado) {
         super(x, y);
         this.lado = lado;
     }
 
     public void imp() {
-        Saida.println("Xinicial: " + (super.getX() - (this.lado / 2)));
-        Saida.println("Yinicial: " + (super.getY() - (this.lado / 2)));
-        Saida.println("XFinal: " + (super.getX() + (this.lado / 2)));
-        Saida.println("YFinal: " + (super.getY() + (this.lado / 2)));
+        Saida.print("\nQuadrado");
         super.imp();
+        Saida.println("lado = " + this.lado);
     }
 
     public int getX() {

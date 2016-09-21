@@ -20,8 +20,9 @@ public class Circulo extends Figura {
     }
 
     public void imp() {
-        Saida.println("raio = " + this.raio);
+        Saida.print("\nCirculo");
         super.imp();
+        Saida.println("raio = " + this.raio);
     }
 
     public Double getArea() {

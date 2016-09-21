@@ -11,7 +11,7 @@ public class Figura {
     }
 
     public void imp() {
-        Saida.println( "Centro(" + this.x + ", " + this.y + ")" );
+        Saida.println( "\nCentro(" + this.x + ", " + this.y + ")" );
     }
 
     public int getX() {
