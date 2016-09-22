@@ -5,7 +5,7 @@ import fronteira.*;
 
 public class EmpilhadorFigura {
     private Pilha p;
-    private Figura f;
+    private Figura f, fAux;
     private int x, y, ladoRaio;
     private String opcao;
     private String []figuras = {"circulo", "quadrado", "triangulo"};
@@ -27,17 +27,43 @@ public class EmpilhadorFigura {
                 case "circulo":
                     ladoRaio = Entrada.leInt("\nInforme o raio do circulo: ");
                     f = new Circulo(x, y, ladoRaio);
-                    p.empilhe(f);
+
+                    if (p.vazia()) {
+                        p.empilhe(f);
+                    } else {
+                        fAux = (Figura) p.topo();
+                        if (fAux instanceof Circulo) {
+                            if (fAux.raio > f.raio) {
+                                p.empilhe(f);
+                            } else {
+                                
+                            }
+                        } else if (fAux instanceof Quadrado) {
+
+                        } else if (fAux instanceof Triangulo) {
+                            
+                        }
+                    }
                     break;
                 case "quadrado":
                     ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
                     f = new Quadrado(x, y, ladoRaio);
-                    p.empilhe(f);
+
+                    if (p.vazia()) {
+                        p.empilhe(f);
+                    } else {
+                        fAux = (Figura) p.topo();
+                    }
                     break;
                 case "triangulo":
                     ladoRaio = Entrada.leInt("\nInforme o lado do triangulo: ");
                     f = new Triangulo(x, y, ladoRaio);
-                    p.empilhe(f);
+
+                    if (p.vazia()) {
+                        p.empilhe(f);
+                    } else {
+                        fAux = (Figura) p.topo();
+                    }
                     break;
                 default:
                     break;
