@@ -56,11 +56,29 @@ public class EmpilhadorFigura {
                     ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
                     f = new Quadrado(x, y, ladoRaio);
 
-                    if (p.vazia()) {
-                        p.empilhe(f);
-                    } else {
+                    if (!p.vazia()) {
                         fAnt = (Figura) p.topo();
+                        if (fAnt instanceof Circulo) {
+                            while(fAnt.getRaio() <= f.getRaio()) {
+                                Saida.print("O raio do novo circulo precisa ser menor que " + fAnt.getRaio());
+                                ladoRaio = Entrada.leInt("\nInforme novamente o raio do circulo: ");
+                                f.setRaio(ladoRaio);
+                            }
+                        } else if (fAnt instanceof Quadrado) { // OK
+                            while(fAnt.getLado() <= f.getLado()) {
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + f.getLado());
+                                ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
+                                f.setLado(ladoRaio);
+                            }
+                        } else if (fAnt instanceof Triangulo) {
+                            while((fAnt.getAltura() / 3) <= f.getRaio())) {
+                                Saida.print("O raio do novo circulo precisa ser menor que " + (fAnt.getAltura() / 3));
+                                ladoRaio = Entrada.leInt("\nInforme novamente o raio do circulo: ");
+                                f.setRaio(ladoRaio);
+                            }
+                        }
                     }
+                    p.empilhe(f);
                     break;
                 case "triangulo":
                     ladoRaio = Entrada.leInt("\nInforme o lado do triangulo: ");
