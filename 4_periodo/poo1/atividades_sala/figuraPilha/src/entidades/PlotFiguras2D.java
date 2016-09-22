@@ -3,7 +3,7 @@ package entidades;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Example01 extends Frame {
+public class PlotFiguras2D extends Frame {
     /* Frame � a janela gr�fica onde as figuras ser�o dispostas */
     Pilha pf;
     /*� o vetor de Figuras que servira de container para adicionar as figuras.
@@ -13,21 +13,21 @@ public class Example01 extends Frame {
     private static final long serialVersionUID = 1L;
 
     /**
-    * Um objeto  Example01 � criado. 
+    * Um objeto PlotFiguras2D � criado. 
     **/
     // public static void main(String args[]) {
-    //     new Example01();
+    //     new PlotFiguras2D();
     // }
 
     /**
-    * Our Example01 constructor sets the frame's size, adds the
+    * Our PlotFiguras2D constructor sets the frame's size, adds the
     * visual components, and then makes them visible to the user.
     * It uses an adapter class to deal with the user closing
     * the frame.
-    * O construtor de Example01 define o tamanho do frame, adiciona componentes visuais, como o t�tulo
+    * O construtor de PlotFiguras2D define o tamanho do frame, adiciona componentes visuais, como o t�tulo
     * deixa o frame vis�vel para o usu�rio.
     **/
-    public Example01(Pilha pf) {
+    public PlotFiguras2D(Pilha pf) {
         //Title our frame.
         super("Pilha de Figuras - A Figura mais interna está no topo");
         this.pf = pf;

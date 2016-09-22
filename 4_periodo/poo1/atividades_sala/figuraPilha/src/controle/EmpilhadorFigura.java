@@ -46,7 +46,7 @@ public class EmpilhadorFigura {
     }
 
     public void mostrarFiguras() {
-        new Example01(p);
+        new PlotFiguras2D(p);
         // Saida.println("\nImpressão em ordem de desempilhamento");
 
         // while(!p.vazia()) {
