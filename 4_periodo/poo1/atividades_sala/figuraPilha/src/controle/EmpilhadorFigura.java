@@ -5,7 +5,7 @@ import fronteira.*;
 
 public class EmpilhadorFigura {
     private Pilha p;
-    private Figura f, fAux;
+    private Figura f, fAnt;
     private int x, y, ladoRaio;
     private String opcao;
     private String []figuras = {"circulo", "quadrado", "triangulo"};
@@ -28,22 +28,29 @@ public class EmpilhadorFigura {
                     ladoRaio = Entrada.leInt("\nInforme o raio do circulo: ");
                     f = new Circulo(x, y, ladoRaio);
 
-                    if (p.vazia()) {
-                        p.empilhe(f);
-                    } else {
-                        fAux = (Figura) p.topo();
-                        if (fAux instanceof Circulo) {
-                            if (fAux.raio > f.raio) {
-                                p.empilhe(f);
-                            } else {
-                                
+                    if (!p.vazia()) {
+                        fAnt = (Figura) p.topo();
+                        if (fAnt instanceof Circulo) {
+                            while(fAnt.getRaio() <= f.getRaio()) {
+                                Saida.print("O raio do novo circulo precisa ser menor que " + fAnt.getRaio());
+                                ladoRaio = Entrada.leInt("\nInforme novamente o raio do circulo: ");
+                                f.setRaio(ladoRaio);
                             }
-                        } else if (fAux instanceof Quadrado) {
-
-                        } else if (fAux instanceof Triangulo) {
-                            
+                        } else if (fAnt instanceof Quadrado) {
+                            while(fAnt.getLado() <= (f.getRaio() * 2)) {
+                                Saida.print("O raio do novo circulo precisa ser menor que " + (fAnt.getLado() / 2));
+                                ladoRaio = Entrada.leInt("\nInforme novamente o raio do circulo: ");
+                                f.setRaio(ladoRaio);
+                            }
+                        } else if (fAnt instanceof Triangulo) {
+                            while((fAnt.getAltura() / 3) <= f.getRaio())) {
+                                Saida.print("O raio do novo circulo precisa ser menor que " + (fAnt.getAltura() / 3));
+                                ladoRaio = Entrada.leInt("\nInforme novamente o raio do circulo: ");
+                                f.setRaio(ladoRaio);
+                            }
                         }
                     }
+                    p.empilhe(f);
                     break;
                 case "quadrado":
                     ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
@@ -52,7 +59,7 @@ public class EmpilhadorFigura {
                     if (p.vazia()) {
                         p.empilhe(f);
                     } else {
-                        fAux = (Figura) p.topo();
+                        fAnt = (Figura) p.topo();
                     }
                     break;
                 case "triangulo":
@@ -62,7 +69,7 @@ public class EmpilhadorFigura {
                     if (p.vazia()) {
                         p.empilhe(f);
                     } else {
-                        fAux = (Figura) p.topo();
+                        fAnt = (Figura) p.topo();
                     }
                     break;
                 default:
@@ -73,11 +80,5 @@ public class EmpilhadorFigura {
 
     public void mostrarFiguras() {
         new PlotFiguras2D(p);
-        // Saida.println("\nImpressão em ordem de desempilhamento");
-
-        // while(!p.vazia()) {
-        //     f = (Figura) p.desempilhe();
-        //     f.imp();
-        // }
     }
 }
