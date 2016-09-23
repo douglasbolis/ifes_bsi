@@ -2,6 +2,7 @@ package entidades;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.math.*;
 
 public class PlotFiguras2D extends Frame {
     /* Frame � a janela gr�fica onde as figuras ser�o dispostas */
@@ -88,11 +89,20 @@ public class PlotFiguras2D extends Frame {
                 g2d.drawRect(q.getX()-q.getLado()/2,q.getY()-q.getLado()/2,q.getLado(),q.getLado());  		
             } else if (f instanceof Triangulo) {
                 Triangulo t =(Triangulo) f;
-                g2d.drawPolygon(
-                    [ t.getX() - (2 / 3 * t.getAltura()), t.getX() + (t.getLado() / 2), t.getX() - (t.getLado() / 2) ],
-                    [ t.getY(), t.getY() + (1 / 3 * t.getAltura()), t.getY() + (1 / 3 * t.getAltura()), ],
-                    3
-                );
+                Double a = 1.0, b = 2.0, div = 3.0;
+
+                int[] lstPointX = new int[] {
+                    t.getX(),
+                    (t.getX() + (t.getLado() / 2)),
+                    (t.getX() - (t.getLado() / 2))
+                };
+                int[] lstPointY = new int[] {
+                    (t.getY() - (int)Math.round(b / div * t.getAltura())),
+                    (t.getY() + (int)Math.round(a / div * t.getAltura())),
+                    (t.getY() + (int)Math.round(a / div * t.getAltura()))
+                };
+
+                g2d.drawPolygon(lstPointX, lstPointY, 3);
             }
         }
     }

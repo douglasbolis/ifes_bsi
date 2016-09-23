@@ -20,7 +20,7 @@ public class Triangulo extends Figura {
     }
 
     public Double getAltura() {
-        return Math.sqrt(Math.pow(this.lado, 2) - Math.pow(this.lado / 2, 2));
+        return Math.sqrt(Math.pow(this.lado, 2) - Math.pow((this.lado / 2), 2));
     }
 
     public void imp() {
