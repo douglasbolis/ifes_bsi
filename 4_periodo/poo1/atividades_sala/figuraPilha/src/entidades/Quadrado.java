@@ -29,6 +29,10 @@ public class Quadrado extends Figura {
         return this.lado;
     }
 
+    public void setLado(int lado) {
+        this.lado = lado;
+    }
+
     public Double getArea() {
         return Math.pow(this.lado, 2);
     }

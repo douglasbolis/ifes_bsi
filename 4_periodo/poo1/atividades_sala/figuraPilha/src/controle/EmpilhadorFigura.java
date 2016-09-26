@@ -60,6 +60,32 @@ public class EmpilhadorFigura {
                 case "quadrado":
                     ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
                     Quadrado nQuad = new Quadrado(x, y, ladoRaio);
+
+                    if (!p.vazia()) {
+                        fAnt = (Figura) p.topo();
+                        if (fAnt instanceof Circulo) {
+                            Circulo c = (Circulo) fAnt;
+                            while(c.getRaio() <= (Math.sqrt(2) * nQuad.getLado() / 2)) {
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + Math.round(c.getRaio() * 2 * (Math.sqrt(2) / 2)));
+                                ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
+                                nQuad.setLado(ladoRaio);
+                            }
+                        } else if (fAnt instanceof Quadrado) {
+                            Quadrado q = (Quadrado) fAnt;
+                            while(q.getLado() <= (Math.sqrt(2) * nQuad.getLado())) {
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + Math.round(q.getLado() * (Math.sqrt(2) / 2)));
+                                ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
+                                nQuad.setLado(ladoRaio);
+                            }
+                        } else if (fAnt instanceof Triangulo) {
+                            Triangulo t = (Triangulo) fAnt;
+                            while((t.getAltura() / 3) <= (Math.sqrt(2) * nQuad.getLado() / 2)) {
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + Math.round(t.getAltura() * 2 / 3 * (Math.sqrt(2) / 2)));
+                                ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
+                                nQuad.setLado(ladoRaio);
+                            }
+                        }
+                    }
                     p.empilhe(nQuad);
                     break;
                 case "triangulo":
