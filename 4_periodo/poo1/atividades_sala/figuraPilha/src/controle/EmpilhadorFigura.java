@@ -10,7 +10,7 @@ public class EmpilhadorFigura {
     private Figura fAnt;
     private int x, y, ladoRaio;
     private String opcao;
-    private String []figuras = {"circulo", "quadrado", "triangulo"};
+    private String[] figuras = {"1", "2", "3"};
 
     public EmpilhadorFigura(int qtdElemPilha) {
         p = new Pilha(qtdElemPilha);
@@ -24,9 +24,10 @@ public class EmpilhadorFigura {
         y = Entrada.leInt("Y: ");
 
         while (!p.cheia() && java.util.Arrays.asList(figuras).indexOf(opcao) >= 0) {
+            Saida.println("\n1 - Circulo\n2 - Quadrado\n3 - Triangulo\n0 - Sair");
             opcao = Entrada.leString("\nInforme uma figura a ser empilhada: ");
             switch (opcao) {
-                case "circulo":
+                case "1":
                     ladoRaio = Entrada.leInt("\nInforme o raio do circulo: ");
                     Circulo nCirc = new Circulo(x, y, ladoRaio);
 
@@ -49,7 +50,7 @@ public class EmpilhadorFigura {
                         } else if (fAnt instanceof Triangulo) {
                             Triangulo t = (Triangulo) fAnt;
                             while((t.getAltura() / 3) <= nCirc.getRaio()) {
-                                Saida.print("O raio do novo circulo precisa ser menor que " + Math.round(t.getAltura() / 3));
+                                Saida.print("O raio do novo circulo precisa ser menor que " + (int) Math.ceil(t.getAltura() / 3));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o raio do circulo: ");
                                 nCirc.setRaio(ladoRaio);
                             }
@@ -57,7 +58,7 @@ public class EmpilhadorFigura {
                     }
                     p.empilhe(nCirc);
                     break;
-                case "quadrado":
+                case "2":
                     ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
                     Quadrado nQuad = new Quadrado(x, y, ladoRaio);
 
@@ -66,21 +67,21 @@ public class EmpilhadorFigura {
                         if (fAnt instanceof Circulo) {
                             Circulo c = (Circulo) fAnt;
                             while(c.getRaio() <= (Math.sqrt(2) * nQuad.getLado() / 2)) {
-                                Saida.print("O lado do novo quadrado precisa ser menor que " + Math.round(c.getRaio() * 2 * (Math.sqrt(2) / 2)));
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + (int) Math.ceil(c.getRaio() * 2 * (Math.sqrt(2) / 2)));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
                                 nQuad.setLado(ladoRaio);
                             }
                         } else if (fAnt instanceof Quadrado) {
                             Quadrado q = (Quadrado) fAnt;
                             while(q.getLado() <= (Math.sqrt(2) * nQuad.getLado())) {
-                                Saida.print("O lado do novo quadrado precisa ser menor que " + Math.round(q.getLado() * (Math.sqrt(2) / 2)));
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + (int) Math.ceil(q.getLado() * (Math.sqrt(2) / 2)));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
                                 nQuad.setLado(ladoRaio);
                             }
                         } else if (fAnt instanceof Triangulo) {
                             Triangulo t = (Triangulo) fAnt;
                             while((t.getAltura() / 3) <= (Math.sqrt(2) * nQuad.getLado() / 2)) {
-                                Saida.print("O lado do novo quadrado precisa ser menor que " + Math.round(t.getAltura() * 2 / 3 * (Math.sqrt(2) / 2)));
+                                Saida.print("O lado do novo quadrado precisa ser menor que " + (int) Math.ceil(t.getAltura() * 2 / 3 * (Math.sqrt(2) / 2)));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o lado do quadrado: ");
                                 nQuad.setLado(ladoRaio);
                             }
@@ -88,7 +89,7 @@ public class EmpilhadorFigura {
                     }
                     p.empilhe(nQuad);
                     break;
-                case "triangulo":
+                case "3":
                     ladoRaio = Entrada.leInt("\nInforme o lado do triangulo: ");
                     Triangulo nTrian = new Triangulo(x, y, ladoRaio);
 
@@ -97,21 +98,21 @@ public class EmpilhadorFigura {
                         if (fAnt instanceof Circulo) {
                             Circulo c = (Circulo) fAnt;
                             while(c.getRaio() <= ((nTrian.getAltura() * 2) / 3)) {
-                                Saida.print("O lado do novo triangulo precisa ser menor que " + Math.round((3 * (c.getRaio() / 2)) / (Math.sqrt(3) / 2)));
+                                Saida.print("O lado do novo triangulo precisa ser menor que " + (int) Math.ceil((3 * (c.getRaio() / 2)) / (Math.sqrt(3) / 2)));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o lado do triangulo: ");
                                 nTrian.setLado(ladoRaio);
                             }
                         } else if (fAnt instanceof Quadrado) {
                             Quadrado q = (Quadrado) fAnt;
                             while((q.getLado() / 2) <= ((nTrian.getAltura() * 2) / 3)) {
-                                Saida.print("O lado do novo triangulo precisa ser menor que " + Math.round((3 * (q.getLado() / 4)) / (Math.sqrt(3) / 2)));
+                                Saida.print("O lado do novo triangulo precisa ser menor que " + (int) Math.ceil((3 * (q.getLado() / 4)) / (Math.sqrt(3) / 2)));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o lado do triangulo: ");
                                 nTrian.setLado(ladoRaio);
                             }
                         } else if (fAnt instanceof Triangulo) {
                             Triangulo t = (Triangulo) fAnt;
                             while((t.getAltura() / 3) <= ((nTrian.getAltura() * 2) / 3)) {
-                                Saida.print("O lado do novo triangulo precisa ser menor que " + Math.round(((t.getAltura() / 2)) / (Math.sqrt(3) / 2)));
+                                Saida.print("O lado do novo triangulo precisa ser menor que " + (int) Math.ceil(((t.getAltura() / 2)) / (Math.sqrt(3) / 2)));
                                 ladoRaio = Entrada.leInt("\nInforme novamente o lado do triangulo: ");
                                 nTrian.setLado(ladoRaio);
                             }

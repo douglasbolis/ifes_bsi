@@ -33,7 +33,7 @@ public class PlotFiguras2D extends Frame {
         super("Pilha de Figuras - A Figura mais interna está no topo");
         this.pf = pf;
         //Set the size for the frame.
-        setSize(500,400);
+        setSize(950,750);
 
         //We need to turn on the visibility of our frame
         //by setting the Visible parameter to true.
