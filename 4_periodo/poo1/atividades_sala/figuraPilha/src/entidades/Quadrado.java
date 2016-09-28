@@ -1,7 +1,10 @@
 package entidades;
 
-import java.math.*;
 import fronteira.*;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.math.*;
 
 public class Quadrado extends Figura {
     private int lado;
@@ -15,6 +18,10 @@ public class Quadrado extends Figura {
         Saida.print("\nQuadrado");
         super.imp();
         Saida.println("lado = " + this.lado);
+    }
+
+    public void desenhe(Graphics2D g2d) {
+        g2d.drawRect(getX() - getLado() / 2, getY() - getLado() / 2, getLado(), getLado());
     }
 
     public int getX() {

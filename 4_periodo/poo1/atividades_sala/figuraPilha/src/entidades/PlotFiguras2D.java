@@ -80,30 +80,7 @@ public class PlotFiguras2D extends Frame {
 
         while(!pf.vazia()) {
             f = (Figura) pf.desempilhe();
-
-            if( f instanceof Circulo ) {
-                Circulo c = (Circulo) f;
-                g2d.drawOval(c.getX() - c.getRaio() ,  c.getY() - c.getRaio() ,  2*c.getRaio() ,  2*c.getRaio());  		
-            } else if (f instanceof Quadrado) {
-                Quadrado q =(Quadrado) f;
-                g2d.drawRect(q.getX()-q.getLado()/2,q.getY()-q.getLado()/2,q.getLado(),q.getLado());  		
-            } else if (f instanceof Triangulo) {
-                Triangulo t =(Triangulo) f;
-                Double a = 1.0, b = 2.0, div = 3.0;
-
-                int[] lstPointX = new int[] {
-                    t.getX(),
-                    (t.getX() + (t.getLado() / 2)),
-                    (t.getX() - (t.getLado() / 2))
-                };
-                int[] lstPointY = new int[] {
-                    (t.getY() - (int)Math.round(b / div * t.getAltura())),
-                    (t.getY() + (int)Math.round(a / div * t.getAltura())),
-                    (t.getY() + (int)Math.round(a / div * t.getAltura()))
-                };
-
-                g2d.drawPolygon(lstPointX, lstPointY, 3);
-            }
+            f.desenhe(g2d);
         }
     }
 }

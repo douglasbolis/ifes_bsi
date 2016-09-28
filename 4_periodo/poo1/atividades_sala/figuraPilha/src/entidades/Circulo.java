@@ -1,7 +1,10 @@
 package entidades;
 
-import java.math.*;
 import fronteira.*;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.math.*;
 
 public class Circulo extends Figura {
     private int raio;
@@ -25,7 +28,19 @@ public class Circulo extends Figura {
         Saida.println("raio = " + this.raio);
     }
 
+    public void desenhe(Graphics2D g2d) {
+        g2d.drawOval(getX() - getRaio() ,  getY() - getRaio() ,  2*getRaio() ,  2*getRaio());
+    }
+
     public Double getArea() {
         return Math.PI * Math.pow(this.raio, 2);
+    }
+
+    public int getX() {
+        return super.getX();
+    }
+
+    public int getY() {
+        return super.getY();
     }
 }

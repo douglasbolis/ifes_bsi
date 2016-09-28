@@ -2,6 +2,9 @@ package entidades;
 
 import fronteira.*;
 
+import java.awt.*;
+import java.awt.event.*;
+
 public class Figura {
     private int x, y;
 
@@ -13,6 +16,8 @@ public class Figura {
     public void imp() {
         Saida.println( "\nCentro(" + this.x + ", " + this.y + ")" );
     }
+
+    public void desenhe(Graphics2D g2d) { }
 
     public int getX() {
         return this.x;
