@@ -7,10 +7,12 @@ import java.awt.event.*;
 
 public class Figura {
     private int x, y;
+    private String id;
 
-    public Figura(int x, int y) {
+    public Figura(int x, int y, String id) {
         this.x = x;
         this.y = y;
+        this.id = id;
     }
 
     public void imp() {
@@ -25,5 +27,9 @@ public class Figura {
 
     public int getY() {
         return this.y;
+    }
+
+    public String getId() {
+        return this.id;
     }
 }

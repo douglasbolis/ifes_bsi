@@ -9,8 +9,8 @@ import java.math.*;
 public class Quadrado extends Figura {
     private int lado;
 
-    public Quadrado(int x, int y, int lado) {
-        super(x, y);
+    public Quadrado(int x, int y, int lado, String id) {
+        super(x, y, id);
         this.lado = lado;
     }
 
@@ -30,6 +30,10 @@ public class Quadrado extends Figura {
 
     public int getY() {
         return super.getY();
+    }
+
+    public String getId() {
+        return super.getId();
     }
 
     public int getLado() {

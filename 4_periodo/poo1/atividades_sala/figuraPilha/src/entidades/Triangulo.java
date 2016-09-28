@@ -9,8 +9,8 @@ import java.math.*;
 public class Triangulo extends Figura {
     private int lado;
 
-    public Triangulo(int x, int y, int lado) {
-        super(x, y);
+    public Triangulo(int x, int y, int lado, String id) {
+        super(x, y, id);
         this.lado = lado;
     }
 
@@ -59,5 +59,9 @@ public class Triangulo extends Figura {
 
     public int getY() {
         return super.getY();
+    }
+
+    public String getId() {
+        return super.getId();
     }
 }

@@ -9,8 +9,8 @@ import java.math.*;
 public class Circulo extends Figura {
     private int raio;
 
-    public Circulo(int x, int y, int raio) {
-        super(x, y);
+    public Circulo(int x, int y, int raio, String id) {
+        super(x, y, id);
         this.raio = raio;
     }
 
@@ -42,5 +42,9 @@ public class Circulo extends Figura {
 
     public int getY() {
         return super.getY();
+    }
+
+    public String getId() {
+        return super.getId();
     }
 }

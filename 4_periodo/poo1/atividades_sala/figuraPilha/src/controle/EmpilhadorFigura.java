@@ -11,6 +11,7 @@ public class EmpilhadorFigura {
     private int x, y, ladoRaio;
     private String opcao;
     private String[] figuras = {"1", "2", "3"};
+    private int[] id = new int[] { 0, 0, 0 };
 
     public EmpilhadorFigura(int qtdElemPilha) {
         p = new Pilha(qtdElemPilha);
@@ -29,7 +30,8 @@ public class EmpilhadorFigura {
             switch (opcao) {
                 case "1":
                     ladoRaio = Entrada.leInt("\nInforme o raio do circulo: ");
-                    Circulo nCirc = new Circulo(x, y, ladoRaio);
+                    id[0] += 1;
+                    Circulo nCirc = new Circulo(x, y, ladoRaio, "circ" + id[0]);
 
                     if (!p.vazia()) {
                         fAnt = (Figura) p.topo();
@@ -60,7 +62,8 @@ public class EmpilhadorFigura {
                     break;
                 case "2":
                     ladoRaio = Entrada.leInt("\nInforme o lado do quadrado: ");
-                    Quadrado nQuad = new Quadrado(x, y, ladoRaio);
+                    id[1] += 1;
+                    Quadrado nQuad = new Quadrado(x, y, ladoRaio, "quad" + id[1]);
 
                     if (!p.vazia()) {
                         fAnt = (Figura) p.topo();
@@ -91,7 +94,8 @@ public class EmpilhadorFigura {
                     break;
                 case "3":
                     ladoRaio = Entrada.leInt("\nInforme o lado do triangulo: ");
-                    Triangulo nTrian = new Triangulo(x, y, ladoRaio);
+                    id[2] += 1;
+                    Triangulo nTrian = new Triangulo(x, y, ladoRaio, "triang" + id[2]);
 
                     if (!p.vazia()) {
                         fAnt = (Figura) p.topo();
