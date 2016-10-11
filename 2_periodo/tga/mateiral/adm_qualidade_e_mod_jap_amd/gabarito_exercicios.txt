@@ -1,0 +1,40 @@
+1)
+ - a: v
+ - b: v
+ - c: f -> conformidade
+ - d: f -> especificaões
+ - e: v
+ - f
+ - g: v
+ - h: v
+ - i: v
+ - j: v
+
+2) d
+
+3) 2 - todos devem ser incluídos
+
+4) c - somente a primeira
+
+5) c
+
+6) b
+
+7) c
+
+8) b
+
+9) página 127
+
+10) a
+
+11) a
+
+12) a
+
+13) a
+
+14) a
+
+15) d
+
