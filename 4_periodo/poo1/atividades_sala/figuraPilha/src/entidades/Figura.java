@@ -5,7 +5,7 @@ import fronteira.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Figura {
+abstract public class Figura {
     private int x, y;
     private String id;
 
@@ -19,7 +19,7 @@ public class Figura {
         Saida.println( "\nCentro(" + this.x + ", " + this.y + ")" );
     }
 
-    public void desenhe(Graphics2D g2d) { }
+    public abstract void desenhe(Graphics2D g2d);
 
     public int getX() {
         return this.x;
