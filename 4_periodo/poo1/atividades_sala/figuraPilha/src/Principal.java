@@ -7,11 +7,9 @@ public class Principal {
         int nFig;
 
         Saida.println(" === JOGO - Imprime figuras ===");
-        nFig = Entrada.leInt("Informe o número de figuras a serem inseridos na pilha: ");
 
-        pFig = new EmpilhadorFigura(nFig);
+        pFig = new EmpilhadorFigura();
 
-        pFig.horaDeEmpilhar();
-        pFig.mostrarFiguras();
+        pFig.menuFigura();
     }
 }

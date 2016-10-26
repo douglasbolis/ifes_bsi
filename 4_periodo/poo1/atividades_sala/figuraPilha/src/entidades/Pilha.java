@@ -1,11 +1,12 @@
 package entidades;
 
 public class Pilha {
+    private final int tamMax = 100;
     private int topo, tam;
     private Object elem;
     private Object []vet;
 
-    public Pilha(int tamMax) {
+    public Pilha() {
         vet = new Object[tamMax];
         tam = tamMax;
         topo = -1;

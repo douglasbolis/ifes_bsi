@@ -9,22 +9,49 @@ public class EmpilhadorFigura {
     private Pilha p;
     private Figura fAnt;
     private int x, y, ladoRaio;
-    private String opcao;
-    private String[] figuras = {"1", "2", "3"};
+    private String opcao, opMenu;
+    private String[] figuras = {"1", "2", "3"}, menu = {"1", "2", "3"};
     private int[] id = new int[] { 0, 0, 0 };
 
-    public EmpilhadorFigura(int qtdElemPilha) {
-        p = new Pilha(qtdElemPilha);
-        // valida while
+    public EmpilhadorFigura() {
+        p = new Pilha();
+        // valida whiles
         opcao = figuras[0];
+        opMenu = menu[0];
+    }
+
+    public void menuFigura() {
+        while(!p.cheia() && java.util.Arrays.asList(menu).indexOf(opMenu) >= 0) {
+            Saida.println("\n1 - Empilhar figura\n2 - Desenhar figuras\n3 - Deletar figura\n0 - Sair");
+            opMenu = Entrada.leString("\nInforme uma opção do menu: ");
+
+            switch (opMenu) {
+                case "1":
+                    horaDeEmpilhar();
+                    break;
+                case "2":
+                    desenharFiguras();
+                    break;
+                case "3":
+                    break;
+                default:
+                    break;
+            }
+
+        }
     }
 
     public void horaDeEmpilhar() {
-        Saida.println("Informe os dados do centro das figuras");
-        x = Entrada.leInt("X: ");
-        y = Entrada.leInt("Y: ");
+        if (p.vazia()) {
+            Saida.println("Informe os dados do centro das figuras");
+            x = Entrada.leInt("X: ");
+            y = Entrada.leInt("Y: ");
+        } else {
+            x = ((Figura)p.topo()).getX();
+            y = ((Figura)p.topo()).getY();
+        }
 
-        while (!p.cheia() && java.util.Arrays.asList(figuras).indexOf(opcao) >= 0) {
+        if (java.util.Arrays.asList(figuras).indexOf(opcao) >= 0) {
             Saida.println("\n1 - Circulo\n2 - Quadrado\n3 - Triangulo\n0 - Sair");
             opcao = Entrada.leString("\nInforme uma figura a ser empilhada: ");
             switch (opcao) {
@@ -130,7 +157,7 @@ public class EmpilhadorFigura {
         }
     }
 
-    public void mostrarFiguras() {
+    public void desenharFiguras() {
         new PlotFiguras2D(p);
     }
 }
