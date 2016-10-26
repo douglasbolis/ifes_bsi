@@ -46,11 +46,13 @@ public class PlotFiguras2D extends Frame {
         * corretamente  aos eventos de fechamento. Sem este adaptador a janela n�o fechara ao clique 
         * do close window
         */
-        addWindowListener(new WindowAdapter()
-          {public void windowClosing(WindowEvent e)
-          {dispose(); System.exit(0);}
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                dispose();
+                // System.exit(0);
+            }
           }
-        );
+        );        
     }
 
     /**
