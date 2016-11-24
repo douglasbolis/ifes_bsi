@@ -17,7 +17,7 @@
 #define MAXRANDOM 29999
 
 /* Multithread */
-#define NUMTHREADS 4
+#define NUMTHREADS 4096
 #define MBLINHA 100
 #define MBCOLUNA 100
 
@@ -47,7 +47,7 @@ void cria_matriz();
 /**
  * Método principal
  */
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
     int tempoMili, t=0, ml, mc, ret=0;
     struct timeval inicioSerial, finalSerial, inicioParalelo, finalParelelo;
     macroBloco* macroblocos;
@@ -71,7 +71,7 @@ int main(int argc, char **argv){
     tempoMili = (int) (1000 * (finalSerial.tv_sec - inicioSerial.tv_sec) + (finalSerial.tv_usec - inicioSerial.tv_usec) / 1000);
     printf("Tempo decorrido: %d ms\n", tempoMili);
     /* FIM BUSCA SERIAL */
-
+    
     /* INÍCIO BUSCA PARALELA */
     _contadorPrimos = 0;
     gettimeofday(&inicioParalelo, NULL);
@@ -81,35 +81,35 @@ int main(int argc, char **argv){
      */
     _MBDisponiveis = (TAMLINHA * TAMCOLUNA) / (MBLINHA * MBCOLUNA);
     macroblocos = (macroBloco*)malloc(_MBDisponiveis * sizeof(macroBloco));
-
+    
     for (ml = 0; ml<TAMLINHA; ml += MBLINHA)
-        for (mc = 0; mc<TAMCOLUNA; mc += MBCOLUNA) {
-            macroblocos[t].linhaI = ml;
-            macroblocos[t].linhaF = ml + MBLINHA;
-            macroblocos[t].colunaI = mc;
-            macroblocos[t].colunaF = mc + MBCOLUNA;
-            t++;
-        }
-
-    /*CRIANDO THREADS*/
-
-    for (t = 0; t<NUMTHREADS; t++) {
-        ret = pthread_create(&threads[t], NULL, busca_paralelo, (void*)macroblocos); //INICIA AS THREADS COM UMA LISTA DE MACROBLOCOS COMO PARAMETRO
-        if (ret) printf("\n Erro: %d \n",ret);
-    }
-
-    for (t = 0; t< NUMTHREADS; t++) {
-        pthread_join(threads[t], NULL);
-    }
-    /* -- */
+		for (mc = 0; mc<TAMCOLUNA; mc += MBCOLUNA) {
+			macroblocos[t].linhaI = ml;
+			macroblocos[t].linhaF = ml + MBLINHA;
+			macroblocos[t].colunaI = mc;
+			macroblocos[t].colunaF = mc + MBCOLUNA;
+			t++;
+		}
+	
+	/* CRIANDO THREADS */	
+	for (t = 0; t<NUMTHREADS; t++) {
+		/* INICIA AS THREADS COM UMA LISTA DE MACROBLOCOS COMO PARAMETRO */
+		ret = pthread_create(&threads[t], NULL, busca_paralelo, (void*)macroblocos);
+		if (ret) printf("\n Erro: %d \n",ret);
+	}
+	
+	for (t = 0; t< NUMTHREADS; t++) {
+		pthread_join(threads[t], NULL);
+	}
+	
     printf("\nBUSCA PARALELA\nQuantidade de números primos na matriz: %u\n", _contadorPrimos);
     gettimeofday(&finalParelelo, NULL);
     tempoMili = (int) (1000 * (finalParelelo.tv_sec - inicioParalelo.tv_sec) + (finalParelelo.tv_usec - inicioParalelo.tv_usec) / 1000);
     printf("Tempo decorrido: %d ms\n", tempoMili);
-
+    
     /* FIM BUSCA PARALELA */
 
-    /*da free na matriz*/
+    /* Liberando memória alocada na matriz */
     set_me_free();
     return 0;
 }
@@ -167,9 +167,9 @@ void add_num() {
 void imprime_matriz() {
     int i, j, *lin;
 
-    for(i = 0; i < TAMLINHA; i++){
+    for(i = 0; i < TAMLINHA; i++) {
         lin = matriz[i];
-        for(j = 0; j < TAMCOLUNA; j++){
+        for(j = 0; j < TAMCOLUNA; j++) {
             printf(" %5d ", lin[j]);
         }
         printf("\n");
@@ -179,15 +179,15 @@ void imprime_matriz() {
 void busca_serial() {
     int i, j, *lin;
 
-    for(i = 0; i < TAMLINHA; i++){
+    for(i = 0; i < TAMLINHA; i++) {
         lin = matriz[i];
-        for(j = 0; j < TAMCOLUNA; j++){
+        for(j = 0; j < TAMCOLUNA; j++) {
             _contadorPrimos += eh_primo(lin[j]);
         }
     }
 }
 
-void set_me_free(){
+void set_me_free() {
     int i, *linha;
     for (i = 0; i < TAMCOLUNA; i++) {
         linha = matriz[i];
@@ -200,44 +200,40 @@ void cria_matriz(){
     int i;
     matriz = malloc(TAMLINHA*sizeof(unsigned long));
 
-    for(i = 0; i < TAMCOLUNA; i++){
-        matriz[i] = malloc(TAMCOLUNA*sizeof(int));
+    for(i = 0; i < TAMCOLUNA; i++) {
+		matriz[i] = malloc(TAMCOLUNA*sizeof(int));
     }
 }
-void *busca_paralelo(void *macroblocos)
-{
-    macroBloco mb;
-    int i = 0, j = 0, fimdatreta = 0, nprimos = 0 ;
-
-    while (1){
-
-        /*região critica dos macroblocos*/
-        pthread_mutex_lock(&_mutexMBDisponiveis);
-        if (_MBDisponiveis >= 1) {
-            mb = ((macroBloco*)macroblocos)[_MBDisponiveis - 1];
-            _MBDisponiveis--;
-        }
-        else {
-            fimdatreta = 1;
-        }
-        pthread_mutex_unlock(&_mutexMBDisponiveis);
-        /* fim da região critica */
-
-        /*finaliza a tread se não houver mais trampo*/
-        if (fimdatreta)pthread_exit(NULL);
-        /* -- */
-        nprimos = 0;
-        /*conta os os primos do macribloco*/
-        for (i = mb.linhaI; i<mb.linhaF; i++)
-            for (j = mb.colunaI; j<mb.colunaF; j++) {
-                if (eh_primo(matriz[i][j])) {
-                    nprimos++;
-                }
-            }
-        /*Região critica onde passa os primos contados do macrobloco para o contador global*/
-        pthread_mutex_lock(&_mutexNumPrimo);
-        _contadorPrimos += nprimos;
-        pthread_mutex_unlock(&_mutexNumPrimo);
-        /* -- */
-    }
+void *busca_paralelo(void *macroblocos) {
+	macroBloco mb;
+	int i = 0, j = 0, fimdatreta = 0, nprimos = 0 ;
+	
+	while (1) {
+		/* região critica dos macroblocos */
+		pthread_mutex_lock(&_mutexMBDisponiveis);
+		if (_MBDisponiveis >= 1) {
+			mb = ((macroBloco*)macroblocos)[_MBDisponiveis - 1];
+			_MBDisponiveis--;
+		} else {
+			fimdatreta = 1;
+		}
+		pthread_mutex_unlock(&_mutexMBDisponiveis);
+		/* fim da região critica */
+		
+		/* finaliza a tread se não houver mais trampo */
+		if (fimdatreta) pthread_exit(NULL);
+		nprimos = 0;
+		/* conta os os primos do macribloco */
+		for (i = mb.linhaI; i<mb.linhaF; i++) {
+			for (j = mb.colunaI; j<mb.colunaF; j++) {
+				if (eh_primo(matriz[i][j])) {
+					nprimos++;
+				}
+			}
+		}
+		/* Região critica onde passa os primos contados do macrobloco para o contador global */
+		pthread_mutex_lock(&_mutexNumPrimo);
+		_contadorPrimos += nprimos;
+		pthread_mutex_unlock(&_mutexNumPrimo);
+	}
 }
