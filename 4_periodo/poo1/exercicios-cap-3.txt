@@ -1,0 +1,130 @@
+45)
+public class Animal {
+     public void comer() {
+          System.out.println( "Animal Comendo..." );
+     }
+}
+public class Cao  extends Animal {
+     public void comer() {
+          System.out.println( "Cão Comendo..." );
+     }
+}
+public class Tigre extends Animal {
+     public void comer() {
+          System.out.println( "Tirgre Comendo..." );
+     }
+}
+
+public class Test {
+  public void fazerAnimalComer( Animal animal ) {
+       animal.comer();
+  }
+  public static void main( String[] args ) {
+       Test t = new Test();
+        t.fazerAnimalComer( new Animal() );
+        t.fazerAnimalComer( new Cao() );
+        t.fazerAnimalComer( new Trigre() );
+   }
+}
+
+46) Se o vertor somente armazenar objetos do tipo Circulo ou Figura funcionaria, mas Objetos do tipo Circulo não conseguiriam se passar
+por outros sub-tipo de Figura, porque algum método específico pode ser definido nas outras subclasses.
+Mas como a classe Desenho apenas possui o método desenhe, o vetor do tipo Circulo poderia armazenar os objetos do tipo Figura e suas subclasses.
+
+47)
+void main() {
+  A a;
+  B b;
+  C c;
+  a = new A();
+  a.s();  // s de A
+  a.m();  // Erro
+  b = new B();
+  a = b; 
+  a.s();  // s de A
+  a.m();  // m de B
+  b.s();  // s de A
+  b.m();  // m de B
+  c = new C();
+  a = c;
+  a.s();  // s de C
+  a.m();  // m de C
+  c.s();  // s de C
+  c.m();  // m de C
+  b = c;
+  b.s();  // s de C 
+  b.m();  // m de C
+}
+
+48)
+classe A:
+  A::s
+  onde A define o método s.
+classe B:
+  A::s
+  B::m
+  onde B herda o método s de A e define o método m.
+classe C:
+  A::s
+  B::m
+  C::s
+  C::m
+  onde C herda os método s e m de A e b, respectivamente, mas os redefine.
+
+49)
+  A classe Pessoa define o método facaAlgumaCoisa e as classes Preguicoso e Trabalhador as define.
+  Na Classe Politico é definido três estados de pessoa: corrente, preguicoso e trabalhador.
+  No construtor, corrente recebe Preguicoso e trabalhador recebe Trabalhador.
+  No método facaAlgumaCoisa, é executado corrente.facaAlgumaCoisa.
+  E emEpocaDeEleicao corrente recebe Trabalhador e emForaDeEpocaDeEleicao corrente recebe Preguicoso.
+  Ou seja, Politico só trabalha emEpocaDeEleicao.
+
+50)
+Tipo da classe Politico
+ - { facaAlgumaCoisa(), emEpocaDeEleicao(), foraDeEpocaDeEleicao() }
+
+Tipo da classe Trabalhador
+ - { facaAlgumaCoisa() }
+
+51)
+  Subtipos é definido como um conjunto de interfaces com os métodos que um tipo possuir
+   - Ex.: um tipo U é subtipo de um tipo T, se U possuir pelo menos as interfaces que T possuir.
+
+52)
+ - 
+
+55)
+ - SmallTalk oferece mais reaproveitamento de código.
+ - POOL-I oferece mais segurança  contra erros de tipo.
+
+60)
+
+
+61)
+- Java para C++:
+  · Não, porque C++ não possui polimorfismo(reaproveitamento de código), impossibilitando a conversão de Java para C++.
+- C++ para Java:
+  · Sim, como C++ e Java são tipados estaticamente pode-se efetuar a conversão de C++ pata Java. 
+
+62)
+- Java para POOL-I:
+  · 
+- POOL-I para Java:
+  ·
+
+63)
+- SmallTalk para POOL-I:
+  · 
+- POOL-I para SmallTalk:
+
+65)
+
+
+66)
+
+
+70)
+
+
+71)
+
