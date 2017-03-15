@@ -1,0 +1,4 @@
+CREATE VIEW cli AS
+ SELECT *
+  FROM clientes
+   WHERE clie_codigo = '20498'
