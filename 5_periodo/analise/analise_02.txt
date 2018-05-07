@@ -1,0 +1,42 @@
+E-Lingua Instituição de ensino a distância de línguas
+
+Sistema para gerenciar suas atividades e prover cursos online
+
+# Cursos de diversas línguas
+A instituição oferece cursos de diversas línguas
+
+# Alunos se inscrevem nos cursos
+Alunos inscrevem-se em cursos
+
+# O curso possui séries com conteúdos e pode ter outra série como pré-requisito
+Um curso é composto por séries
+- Que é composta de conteúdos (vídeos, áudios, textos, etc)
+- Uma série pode ter outra anterior como pré-requisito
+
+# A cada semestre são abertas novas turmas para os cursos
+A cada semestre, a instituição abre turmas das séries dos cursos
+- Uma turma aberta pode receber matrícula dos alunos até o limite de vagas
+
+# Matriculas permitidas até o limite de vagas
+Caso a inscrição do aluno no curso esteja ativa, eles matriculam-se em turmas até o limite de vagas
+- A matrícula deve ocorrer somente nos períodos estipulados
+
+# registra-se as notas no final do semestre
+Quando termina o semestre letivo, registra-se a nota que o aluno obteve
+- Se a nota for igual ou superior a 70%, o aluno poderá se matricular em uma turma da série subsequente
+- A avaliação dos alunos ocorrerá presencialmente em polos da instituição, em todo o país
+
+# Professores alocados nas turmas
+Professores são alocados a turmas.
+- Ao contratar um professor, deseja-se saber os cursos para os quais está habilitado a dar aulas
+
+# Acesso dos alunos
+Os alunos também poderão ser acessar o sistema para consultar
+- o seu histórico
+- as turmas nas quais pode se matricular
+- disponibilidade de vagas
+
+# Dados de relatórios
+Para facilitar o trabalho da secretaria da escola, deseja-se que o sistema emita relatórios de
+- alunos por curso
+- alunos aprovados de uma turma

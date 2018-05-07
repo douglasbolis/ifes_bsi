@@ -1,0 +1,36 @@
+Restaurante Sabor Capixaba
+
+- Realização de atendimento e elaboração de pedidos
+
+- Cadastro de mesas, produtos e funcionários
+
+- Funcionários garçons e cozinheiros
+
+- Mesas podem estar na situação cheia (esperando pedidos, ou não) ou vazia (reservada para algum cliente específico ou não).
+- Mesas são reservadas pelo Gerente do restaurante, por no máximo 2 horas.
+- Os gerentes também são responsáveis por desfazer tais reservas.
+- Ao reservar uma mesa, o cliente deve informar seu nome e telefone.
+
+- Garçons realizam pedidos de uma mesa registrando o produto e a quantidade desejada pelo cliente naquela mesa, se tornando responsável por tal pedido.
+- Apenas é possível registrar pedidos para mesas não reservadas.
+- Não há distinção entre os clientes de uma mesma mesa.
+- Todos os pedidos realizados por ela farão parte de uma mesma comanda.
+- O pedido realizado é
+referente a um ou mais produtos. Pedidos podem estar pendentes, em elaboração, prontos, entregues ou
+pagos. Garçons podem listar pedidos realizados em uma Mesa, consultar suas informações e também
+cancelar um pedido que ainda não começou a ser elaborado. Ao consultar um pedido, o garçom consegue
+consultar informações do produto referente. Os cozinheiros trabalham na elaboração dos pedidos. Eles
+visualizam a lista de pedidos pendentes no restaurante e retiram algum dos pedidos para elaboração.
+Cozinheiros podem estar esperando pedido ou elaborando pedido. Eles podem elaborar no máximo três
+pedidos ao mesmo tempo, além disso, apenas um cozinheiro pode retirar um pedido para elaboração.
+Depois que o pedido é elaborado, o cozinheiro registra o término da elaboração, tornando o pedido pronto.
+Os produtos possuem um tempo médio e um tempo máximo de elaboração. Caso o tempo de elaboração
+do cozinheiro ultrapasse o tempo máximo estipulado para o produto, ele é alertado. Garçons visualizam
+os pedidos prontos e realizam entregas dos mesmos nas mesas, de preferência, entregando pedidos que
+eles mesmo registraram. Na hora do pagamento, os garçons calculam o total da mesa (podendo considerar
+os 10% ou não) e registram o pagamento dos pedidos dela, registrando-os como pagos. O pagamento
+pode ser realizado por meio de dinheiro ou cartão. No caso do pagamento em dinheiro, o garçom calcula
+o troco, já no pagamento em cartão, o caixa registra o número do mesmo, bem como data de vencimento.
+Durante realização do pedido até a elaboração e entrega do mesmo, algumas estatísticas são realizadas
+para se saber o tempo médio para iniciar elaboração pelo cozinheiro, tempo médio de elaboração, de
+entrega pelo garçom e também o tempo total (desde a realização do pedido até sua entrega).
