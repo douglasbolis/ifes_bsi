@@ -1,0 +1,40 @@
+# Lista 1
+
+## 1 ) Liste as possíveis classes com base no minimundo, referente a Objetos, Eventos e Agentes;
+
+### Possíveis classes e atributos:
+
+#### Agentes:
+1. Pessoa
+  - nome: string
+  - telefone: string
+  - email: string
+  - imagem: string
+  - endereco: string
+2. Restaurante extends Pessoa
+3. Funcionario extends Pessoa 
+4. Gerente     extends Funcionario
+  · reserva mesa
+  · cancela reserva de mesa
+  · cadastra funcionário
+5. Cozinheiro  extends Funcionario
+  · elabora pedido
+6. Garcom      extends Funcionario
+  · registra pedido
+7. Caixa       extends Funcionario
+  · realiza pagamento
+
+#### Objetos
+1. Produto
+2. TipoProduto
+3. Mesa
+
+#### Eventos
+1. MesaReservada
+2. Pedido
+3. Venda
+4. Pagamento
+5. PagamentoDinheiro
+6. PagamentoCartao
+
+
