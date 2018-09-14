@@ -1,0 +1,128 @@
+# Lista 1
+
+## 1 ) Liste as possíveis classes com base no minimundo, referente a Objetos, Eventos e Agentes;
+
+### Possíveis classes, atributos e métodos:
+
+#### Agentes:
+1. Pessoa
+  - nome
+  - telefone
+  - email
+  - foto
+  - endereco
+  - inseridoPor
+
+2. Restaurante extends Pessoa
+  - fotoEntrada
+
+3. Funcionario extends Pessoa
+  - turno
+
+4. Gerente extends Funcionario
+  · reservarMesa()
+  · cancelarReservaMesa()
+  · cadastrarFuncionario()
+
+5. Cozinheiro extends Funcionario
+  · elaborarPedido()
+  · listarPedidosPendentes()
+  · finalizarElaboracaoPedido()
+
+6. Garcom extends Funcionario
+  · registrarPedido()
+  · cancelarPedido()
+  · listarPedidos()
+  · consultarInfoPedido()
+  · consultarProdutoPedido()
+  · entregarPedido()
+  · calcularValorTotalMesa()
+  · realizarPagamento()
+
+#### Objetos
+1. Produto
+  - nome
+  - descricao
+  - categoria
+  - volume
+  - valor
+  - qtdEstoque
+  - tempoMedioPreparo
+  - tempoMaxPreparo
+  - inseridoPor
+
+2. ItemProduto
+  - produto
+  - valor
+  - quantidade
+  - status
+  - valorTotal
+  - inseridoPor
+
+3. Mesa
+  - numero
+  - local
+  - qtdCadeiras
+  - inseridoPor
+
+#### Eventos
+1. MesaReservada
+  - dataReserva
+  - horaReserva
+  - nomeCliente
+  - telefoneCliente
+  - inseridoPor
+
+2. Pedido
+  - dataPedido
+  - horaPedido
+  - itensProdutos
+  - valor
+  - inseridoPor
+
+3. ElaboracaoPedido
+  - dataInicioElaboracao
+  - horaInicioElaboracao
+  - pedido
+  - cozinheiro
+  - status
+  - dataTerminoElaboracao
+  - horaTerminoElaboracao
+
+4. Comanda
+  - dataAbertura
+  - horaAbertura
+  - pedidos
+  - mesa
+  - valor
+  - pagamento
+  - dataFechamento
+  - horaFechamento
+  - inseridoPor
+
+5. Pagamento
+  - dataPagamento
+  - horaPagamento
+  - comissao
+  - valor
+  - tipoPagamento
+  - formaPagamento
+  - inseridoPor
+
+6. PagamentoDinheiro
+  - dataPagamento
+  - horaPagamento
+  - data
+  - total
+  - pago
+  - troco
+  - inseridoPor
+
+7. PagamentoCartao
+  - dataPagamento
+  - horaPagamento
+  - titular
+  - cpfTitular
+  - numero
+  - dataVencimento
+  - inseridoPor
