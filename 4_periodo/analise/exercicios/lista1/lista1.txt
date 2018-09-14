@@ -2,20 +2,22 @@
 
 ## 1 ) Liste as possíveis classes com base no minimundo, referente a Objetos, Eventos e Agentes;
 
-### Possíveis classes e atributos:
+### Possíveis classes, atributos e métodos:
 
 #### Agentes:
 1. Pessoa
-  - nome: string
-  - telefone: string
-  - email: string
-  - foto: string
-  - endereco: string
-  - inseridoPor: Funcionario
+  - nome
+  - telefone
+  - email
+  - foto
+  - endereco
+  - inseridoPor
 
 2. Restaurante extends Pessoa
+  - fotoEntrada
 
 3. Funcionario extends Pessoa
+  - turno
 
 4. Gerente extends Funcionario
   · reservarMesa()
@@ -35,82 +37,92 @@
   · consultarProdutoPedido()
   · entregarPedido()
   · calcularValorTotalMesa()
-
-7. Caixa extends Funcionario
   · realizarPagamento()
 
 #### Objetos
 1. Produto
-  - nome: string
-  - valor: number
-  - quantidade: number
-  - tempoMedioPreparo: number
-  - tempoMaxPreparo: number
-  - inseridoPor: Funcionario
+  - nome
+  - descricao
+  - categoria
+  - volume
+  - valor
+  - qtdEstoque
+  - tempoMedioPreparo
+  - tempoMaxPreparo
+  - inseridoPor
 
-2. TipoProduto
-  - nome: string
-  - inseridoPor: Funcionario
+2. ItemProduto
+  - produto
+  - valor
+  - quantidade
+  - status
+  - valorTotal
+  - inseridoPor
 
 3. Mesa
-  - numero: number
-  - inseridoPor: Funcionario
+  - numero
+  - local
+  - qtdCadeiras
+  - inseridoPor
 
 #### Eventos
 1. MesaReservada
-  - dataReserva: string
-  - horaReserva: string
-  - nomeCliente: string
-  - telefoneCliente: string
-  - inseridoPor: Funcionario
+  - dataReserva
+  - horaReserva
+  - nomeCliente
+  - telefoneCliente
+  - inseridoPor
 
 2. Pedido
-  - data: string
-  - hora: string
-  - produto: Produto
-  - quantidade: number
-  - valor: number
-  - valorTotal: number
-  - inseridoPor: Funcionario
+  - dataPedido
+  - horaPedido
+  - itensProdutos
+  - valor
+  - inseridoPor
 
-3. Comanda
-  - dataAbertura: string
-  - horaAbertura: string
-  - pedidos: Array<Pedido>
-  - mesa: Mesa
-  - valor: number
-  - pagamento: Pagamento
-  - dataFechamento: string
-  - horaFechamento: string
-  - inseridoPor: Funcionario
+3. ElaboracaoPedido
+  - dataInicioElaboracao
+  - horaInicioElaboracao
+  - pedido
+  - cozinheiro
+  - status
+  - dataTerminoElaboracao
+  - horaTerminoElaboracao
 
-4. Pagamento
-  - dataPagamento: string
-  - horaPagamento: string
-  - comissao: boolean
-  - valor: number
-  - tipoPagamento: ETypePagamento
-  - formaPagamento: PagamentoCartao | PagamentoDinheiro
-  - inseridoPor: Funcionario
+4. Comanda
+  - dataAbertura
+  - horaAbertura
+  - pedidos
+  - mesa
+  - valor
+  - pagamento
+  - dataFechamento
+  - horaFechamento
+  - inseridoPor
 
-5. PagamentoDinheiro
-  - dataPagamento: string
-  - horaPagamento: string
-  - data: string
-  - total: number
-  - pago: number
-  - troco: number
-  - inseridoPor: Funcionario
+5. Pagamento
+  - dataPagamento
+  - horaPagamento
+  - comissao
+  - valor
+  - tipoPagamento
+  - formaPagamento
+  - inseridoPor
 
-6. PagamentoCartao
-  - dataPagamento: string
-  - horaPagamento: string
-  - titular: string
-  - cpfTitular: string
-  - numero: string
-  - dataVencimento: string
-  - inseridoPor: Funcionario
+6. PagamentoDinheiro
+  - dataPagamento
+  - horaPagamento
+  - data
+  - total
+  - pago
+  - troco
+  - inseridoPor
 
-I. ETypePagamento
-  - CARTAO
-  - DINHEIRO
+7. PagamentoCartao
+  - dataPagamento
+  - horaPagamento
+  - titular
+  - cpfTitular
+  - numero
+  - dataVencimento
+  - inseridoPor
