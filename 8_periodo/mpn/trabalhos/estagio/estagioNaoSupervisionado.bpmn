@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0lmx45c" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_1mgfhpl">
+    <bpmn:participant id="Participant_1dvowg7" name="ESTÁGIO NÃO SUPERVISIONADO" processRef="Process_1" />
+    <bpmn:participant id="Participant_0czptoh" name="EMPRESA" processRef="Process_0oto87g" />
+    <bpmn:messageFlow id="MessageFlow_035g2l6" sourceRef="Task_1wilhzu" targetRef="Task_0t0we8u" />
+    <bpmn:messageFlow id="MessageFlow_1946tcp" sourceRef="Task_0zviohk" targetRef="Task_0o6ovwv" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_0ue22j7">
+      <bpmn:lane id="Lane_1v1xzzs" name="ALUNO">
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1wilhzu</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0o6ovwv</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_0g8uq5b</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>ExclusiveGateway_0hoggva</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_1eppib8</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_1" name="Buscar estágio">
+      <bpmn:outgoing>SequenceFlow_0zaeeny</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1d111rq" sourceRef="Task_0g8uq5b" targetRef="ExclusiveGateway_0hoggva" />
+    <bpmn:sequenceFlow id="SequenceFlow_1gtct71" name="Não" sourceRef="ExclusiveGateway_0hoggva" targetRef="EndEvent_1eppib8" />
+    <bpmn:sequenceFlow id="SequenceFlow_0zaeeny" sourceRef="StartEvent_1" targetRef="Task_1wilhzu" />
+    <bpmn:sendTask id="Task_1wilhzu" name="Se candidatar ao estágio">
+      <bpmn:incoming>SequenceFlow_0zaeeny</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1u8lm88</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1u8lm88" sourceRef="Task_1wilhzu" targetRef="Task_0o6ovwv" />
+    <bpmn:receiveTask id="Task_0o6ovwv" name="Iniciar o estágio">
+      <bpmn:incoming>SequenceFlow_1u8lm88</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0epq5f4</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:task id="Task_0g8uq5b" name="Realizar as atividades do estágio">
+      <bpmn:incoming>SequenceFlow_0w7lgwp</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0epq5f4</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1d111rq</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0hoggva" name="Estágio em vigor?">
+      <bpmn:incoming>SequenceFlow_1d111rq</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1gtct71</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_0w7lgwp</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="EndEvent_1eppib8" name="Finalizar estágio">
+      <bpmn:incoming>SequenceFlow_1gtct71</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0w7lgwp" name="Sim" sourceRef="ExclusiveGateway_0hoggva" targetRef="Task_0g8uq5b" />
+    <bpmn:sequenceFlow id="SequenceFlow_0epq5f4" sourceRef="Task_0o6ovwv" targetRef="Task_0g8uq5b" />
+  </bpmn:process>
+  <bpmn:process id="Process_0oto87g">
+    <bpmn:startEvent id="StartEvent_0vdr3tz" name="Ofertar vaga de estágio">
+      <bpmn:outgoing>SequenceFlow_1br92cj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1br92cj" sourceRef="StartEvent_0vdr3tz" targetRef="Task_0t0we8u" />
+    <bpmn:receiveTask id="Task_0t0we8u" name="Inscrição de candidatos">
+      <bpmn:incoming>SequenceFlow_1br92cj</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0hodaoj</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0hodaoj" sourceRef="Task_0t0we8u" targetRef="IntermediateThrowEvent_1rtfl2k" />
+    <bpmn:intermediateCatchEvent id="IntermediateThrowEvent_1rtfl2k" name="Período de inscrição à vaga de estágio">
+      <bpmn:incoming>SequenceFlow_0hodaoj</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1db7leb</bpmn:outgoing>
+      <bpmn:timerEventDefinition />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1db7leb" sourceRef="IntermediateThrowEvent_1rtfl2k" targetRef="Task_0zviohk" />
+    <bpmn:sendTask id="Task_0zviohk" name="Selecionar candidato">
+      <bpmn:incoming>SequenceFlow_1db7leb</bpmn:incoming>
+    </bpmn:sendTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1mgfhpl">
+      <bpmndi:BPMNShape id="Participant_1dvowg7_di" bpmnElement="Participant_1dvowg7">
+        <dc:Bounds x="535" y="356" width="1123" height="348" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="627" y="488" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="610" y="531" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1v1xzzs_di" bpmnElement="Lane_1v1xzzs">
+        <dc:Bounds x="565" y="356" width="1093" height="348" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0g8uq5b_di" bpmnElement="Task_0g8uq5b">
+        <dc:Bounds x="1224" y="466" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0czptoh_di" bpmnElement="Participant_0czptoh">
+        <dc:Bounds x="535" y="772" width="1125" height="209" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1d111rq_di" bpmnElement="SequenceFlow_1d111rq">
+        <di:waypoint x="1324" y="506" />
+        <di:waypoint x="1410" y="506" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0hoggva_di" bpmnElement="ExclusiveGateway_0hoggva" isMarkerVisible="true">
+        <dc:Bounds x="1410" y="481" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1391" y="457" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1eppib8_di" bpmnElement="EndEvent_1eppib8">
+        <dc:Bounds x="1558" y="488" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1536" y="531" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1gtct71_di" bpmnElement="SequenceFlow_1gtct71">
+        <di:waypoint x="1460" y="506" />
+        <di:waypoint x="1558" y="506" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1499" y="488" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0zaeeny_di" bpmnElement="SequenceFlow_0zaeeny">
+        <di:waypoint x="663" y="506" />
+        <di:waypoint x="741" y="506" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0vdr3tz_di" bpmnElement="StartEvent_0vdr3tz">
+        <dc:Bounds x="619" y="869" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="599" y="912" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1br92cj_di" bpmnElement="SequenceFlow_1br92cj">
+        <di:waypoint x="655" y="887" />
+        <di:waypoint x="741" y="887" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_1hqdebi_di" bpmnElement="Task_1wilhzu">
+        <dc:Bounds x="741" y="466" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ReceiveTask_1s8upgv_di" bpmnElement="Task_0t0we8u">
+        <dc:Bounds x="741" y="847" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_035g2l6_di" bpmnElement="MessageFlow_035g2l6">
+        <di:waypoint x="791" y="546" />
+        <di:waypoint x="791" y="847" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0hodaoj_di" bpmnElement="SequenceFlow_0hodaoj">
+        <di:waypoint x="841" y="887" />
+        <di:waypoint x="891" y="887" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="IntermediateCatchEvent_1pc3euc_di" bpmnElement="IntermediateThrowEvent_1rtfl2k">
+        <dc:Bounds x="891" y="869" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="869" y="912" width="81" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1db7leb_di" bpmnElement="SequenceFlow_1db7leb">
+        <di:waypoint x="927" y="887" />
+        <di:waypoint x="977" y="887" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_0vhtu9q_di" bpmnElement="Task_0zviohk">
+        <dc:Bounds x="977" y="847" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1u8lm88_di" bpmnElement="SequenceFlow_1u8lm88">
+        <di:waypoint x="841" y="506" />
+        <di:waypoint x="968" y="506" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ReceiveTask_1mjpik6_di" bpmnElement="Task_0o6ovwv">
+        <dc:Bounds x="968" y="466" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_1946tcp_di" bpmnElement="MessageFlow_1946tcp">
+        <di:waypoint x="1027" y="847" />
+        <di:waypoint x="1027" y="546" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0w7lgwp_di" bpmnElement="SequenceFlow_0w7lgwp">
+        <di:waypoint x="1435" y="531" />
+        <di:waypoint x="1435" y="616" />
+        <di:waypoint x="1274" y="616" />
+        <di:waypoint x="1274" y="546" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1345" y="598" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0epq5f4_di" bpmnElement="SequenceFlow_0epq5f4">
+        <di:waypoint x="1068" y="506" />
+        <di:waypoint x="1224" y="506" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
