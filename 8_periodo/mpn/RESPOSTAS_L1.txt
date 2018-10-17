@@ -1,0 +1,71 @@
+Respostas - Lista MPN
+
+1. 
+E1 - T1 - T3 - T4 - F
+E1 - T1 - T4 - T3 - F
+E1 - T2 - T3 - T4 - F
+E1 - T2 - T4 - T3 - F
+2. 
+a) 
+E1 - A - C - D -  E - FIM
+E1 - A - C - E -  D - FIM
+E1 - A - C - D -  D - FIM
+E1 - B - D - FIM
+E1 - B - E - FIM 
+E1 - B - C - D -  E - FIM
+E1 - B - C - E -  D - FIM
+E1 - B - C - D -  D - FIM
+
+b)
+E1 - A - B - C - D - FIM
+E1 - A - B - D - C - E - FIM
+E1 - A - B - C - D - E - FIM
+E1 - A - B - C - E - D - FIM
+E1 - B - A - C - D - FIM
+E1 - B - A - D - C - E - FIM
+E1 - B - A - C - D - E - FIM
+E1 - B - A - C - E - D - FIM
+
+c) (subconjunto da resposta)
+
+1.  E1 - A - E3 - D - E4 - F  - E2 - B  - FIM1 - FIM2
+2. E1 - A - E3 - D - E4 - F  - E2 -  C - FIM1 - FIM2
+3. E1 - A - E3 - D - E4 - E2 - F - C - FIM1 - FIM2
+4. E1 - A - E3 - D - E4 - E2 - F - B - FIM1 - FIM2
+5. E1 - A - E3 - D - E4 - E2 - C - F - FIM1 - FIM2
+6. E1 - A - E3 - D - E4 - E2 - B - F - FIM1 - FIM2
+7. E1 - A - E3 - D - E4 - E2 - C - FIM1 - F -  FIM2
+8. E1 - A - E3 - D - E4 - E2 - B - FIM1 - F -  FIM2
+9.  E1 - A - E3 - D - E - F  - E2 - B  - FIM1 - FIM2
+10. E1 - A - E3 - D - E - F  - E2 -  C - FIM1 - FIM2
+11. E1 - A - E3 - D - E - E2 - F - C - FIM1 - FIM2
+12. E1 - A - E3 - D - E - E2 - F - B - FIM1 - FIM2
+13. E1 - A - E3 - D - E - E2 - C - F - FIM1 - FIM2
+14. E1 - A - E3 - D - E - E2 - B - F - FIM1 - FIM2
+15. E1 - A - E3 - D - E - E2 - C - FIM1 - F -  FIM2
+16. E1 - A - E3 - D - E - E2 - B - FIM1 - F -  FIM2
+...
+
+
+d) (subconjunto da resposta)
+E1 - A - Temp - C - FIM1 - E3 - D - E - F - FIM2
+E1 - A - Temp - C - FIM1 - E3 - D - E4 - F - FIM2 (neste caso a mensagem enviada foi perdida)
+E3 - E1 - A - D - E4 - E2 - B - FIM1 - F - FIM2
+E3 - E1 - A - D - E4 -  F - E2 - C -  FIM1  - FIM2 (note que nesse caso a mensagem chegou e demorou a ser consumida - COmo se ficasse em uma fila)
+...
+
+e) (
+E1 - E2 - A - E3 - FIM
+E1 - E2 - - A - B - E4 - C - D - FIM - D - FIM (como o evento de fim não é terminate, a ramificação do evento de sinal pode concluir e depois pode haver uma nova conlcusão com a ramificação natural que sai do subprocesso - Esse tipo de estrutura deve ser evitado porque pode gerar dificuldades de leitura e comportamentamento inesperado)
+
+f)
+E1 - E2 - FIM2
+E1 - E3 - A -  B - C - FIM1
+E1 - A - B (nesse caso não atinge o FIM dado que E3 não correu. Ou seja o modelo possui um erro)
+
+g) (nomear o evento inicial E1 e o final FIM) (subconjunto da resposta)
+E1 - B - B - B - A - C - FIM
+E1 - B - B - B - FIM
+E1 -  FIM (erro antes de terminar a primieira execução de aA e de B)
+E1 - B -  FIM (erro anter de terminar A e tendo executado B uma vez)
+E1 - A - B -  FIM (corre um erro apos a primeira execução de A)
