@@ -1,0 +1,44 @@
+# Minimundo
+# parte I
+# 
+# Uma startup nacional quer ofertar um serviço, chamado NetIfes.
+# 
+# para prover acesso a filmes e séries via streaming e, para isso, precisa de um sistema
+# 
+# De uma série deseja-se saber:
+# - título, direção, elenco, gêneros, ano, classificação, sinopse, se está ativa ou não.
+# De um filme deseja-se saber:
+# - as mesmas informações de uma série, com adição da duração.
+# 
+# 
+# Uma série pode ter sido finalizada, caso não tenha continuação, ou não.
+# Ela é composta de temporadas, que possuem um número e ano de lançamento.
+# Temporadas são compostas de episódios, que possuem nome, número, descrição e duração.
+# Filme e séries possuem também uma data de término da disponibilidade, que já é pré definida no momento da disponibilização do filme.
+# 
+# 
+# Para assistir os conteúdos os clientes deverão fazer uma assinatura, registrando seus dados como:
+# - nome, email e telefone.
+# Uma assinatura pode conter até quatro perfis.
+# Cada perfil possui um nome além de uma classificação permitida.
+# Clientes assistem ao conteúdo disponível por meio do perfil.
+# A cada visualização, o conteúdo deve ser iniciado no ponto em que o cliente parou de assistir ou no início, caso ele nunca tenha assistido o conteúdo.
+
+O primeiro mês de utilização do serviço é gratuito.
+A partir dele os clientes devem pagar uma mensalidade.
+Os pagamentos são realizados mensalmente, sempre na mesma data, um mês após o último pagamento.
+Caso não for realizado, por algum motivo, a conta é dada como em atraso.
+Caso após 1 mês o pagamento não seja realizado, a conta é inativada.
+Os pagamentos são realizados de forma automática.
+Para realização deles, deseja-se saber os dados de um cartão de crédito válido do cliente tais como:
+- nome, sobrenome, número do cartão, validade e código de segurança.
+
+O valor do pagamento varia em função do plano.
+Cada plano possui:
+- um nome (Essencial, Standard, Premium, etc), valor, descrição,
+- resolução máxima de tela (HD, Full HD, Ultra HD, etc)
+- bem como o número máximo de telas que poderão assistir os conteúdos do Netifes ao mesmo tempo.
+
+
+A fim de facilitar o controle da assinatura do serviço pelos clientes:
+- bem como relatórios de pagamentos realizados são importantes, com informações de data e valor.
